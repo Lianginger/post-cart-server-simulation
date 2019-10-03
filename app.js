@@ -25,6 +25,10 @@ app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+app.get('/redirect', (req, res) => {
+  res.redirect(req.headers.referer)
+})
+
 app.post('/cart', (req, res) => {
   if (!req.session.cartId) {
     req.session.cartId = cartId++
