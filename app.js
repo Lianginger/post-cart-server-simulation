@@ -4,7 +4,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const port = process.env.PORT || 3000
-let cartItem = []
+const cartItem = []
 let cartId = 1
 
 const corsOptions = {
@@ -37,7 +37,7 @@ app.post('/cart', (req, res) => {
   }
 
   // store data
-  let existRecord = cartItem.filter(item => {
+  const existRecord = cartItem.filter(item => {
     return item.cartId === req.session.cartId && item.productId === req.body.productId
   })
   if (existRecord.length === 1) {
@@ -51,7 +51,7 @@ app.post('/cart', (req, res) => {
   }
 
   // get data
-  let itemArrayByCartId = cartItem.filter(item => {
+  const itemArrayByCartId = cartItem.filter(item => {
     return item.cartId === req.session.cartId
   })
 
