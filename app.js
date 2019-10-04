@@ -27,6 +27,7 @@ app.use(bodyParser.json())
 
 app.get('/redirect', (req, res) => {
   res.redirect(req.headers.referer)
+  console.log('redirect to', req.headers.referer)
 })
 
 app.post('/cart', (req, res) => {
